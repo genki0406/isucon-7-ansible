@@ -1,0 +1,3 @@
+---
+# vars file for db
+conf_file: /etc/mysql/my.cnf

@@ -1,0 +1,6 @@
+---
+# tasks file for db
+- name: copy mysql config file
+  copy: src=my.cnf dest=/etc/mysql/my.cnf
+  notify: restart mysql
+  become: True

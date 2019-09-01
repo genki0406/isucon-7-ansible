@@ -1,0 +1,6 @@
+---
+# tasks file for web
+- name: copy nginx config file
+  copy: src=nginx.conf dest={{ conf_file }}
+  notify: reload nginx
+  become: True

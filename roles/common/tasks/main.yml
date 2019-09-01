@@ -1,0 +1,35 @@
+---
+# tasks file for isucon
+- name: install packages
+  apt:
+    name: "{{ packages }}"
+    update_cache: True
+    force_apt_get: True
+  vars:
+    packages:
+    - dstat
+    - unzip
+  become: True
+- name: download alp
+  get_url:
+    url: "{{ alp_url }}"
+    dest: /tmp
+  register: downloaded_alp
+- name: unzip alp
+  unarchive:
+    src: /tmp/alp_linux_amd64.zip
+    dest: /tmp
+    remote_src: True
+  when: downloaded_alp.changed == True
+  register: unzip_alp
+  become: True
+- name: install alp
+  command: install ./alp /usr/local/bin
+  args:
+    chdir: /tmp
+  when: unzip_alp.changed == True
+  become: True
+
+
+
+
