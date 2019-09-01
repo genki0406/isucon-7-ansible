@@ -1,0 +1,14 @@
+---
+# tasks file for app
+- name: git clone astel
+  git:
+    repo: git@github.com:genki0406/isucon-7.git
+    dest: "{{ app_dir }}"
+  become: True
+  become_user: isucon
+- name: puma restart
+  command: sh ./setup.sh
+  args:
+    chdir: "{{ app_dir }}"
+  become: True
+  become_user: isucon

@@ -6,4 +6,7 @@
 [db]
 13.115.239.166
 
+[app:children]
+web
+
 [loadbalancer]
