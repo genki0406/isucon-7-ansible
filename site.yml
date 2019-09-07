@@ -1,3 +1,4 @@
 ---
+- include: app.yml
 - include: web.yml
 - include: db.yml
